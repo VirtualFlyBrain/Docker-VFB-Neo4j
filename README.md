@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/VirtualFlyBrain/Docker-VFB-Neo4j.svg?branch=master)](https://travis-ci.org/VirtualFlyBrain/Docker-VFB-Neo4j)
+
 Docker empty neo4j server with VFB
 
 To run:
