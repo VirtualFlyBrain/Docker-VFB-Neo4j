@@ -1,6 +1,9 @@
 FROM neo4j:2.3-enterprise
 
-RUN apk update && apk add openssh
+RUN apt-get -y update && apt-get -y install ssh
+
+RUN sed -i s/wrapper.java.initmemory=512/wrapper.java.initmemory=1024/ /var/lib/neo4j/conf/neo4j-wrapper.conf
+RUN sed -i s/wrapper.java.maxmemory=512/wrapper.java.maxmemory=5120/ /var/lib/neo4j/conf/neo4j-wrapper.conf
 
 ENV NEOCONF="/var/lib/neo4j/conf/neo4j.properties"
 ENV NEOSERCONF="/var/lib/neo4j/conf/neo4j-server.properties"
