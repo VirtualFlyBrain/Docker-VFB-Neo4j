@@ -7,6 +7,7 @@ RUN sed -i s/wrapper.java.maxmemory=512/wrapper.java.maxmemory=5120/ /var/lib/ne
 
 ENV NEOCONF="/var/lib/neo4j/conf/neo4j.properties"
 ENV NEOSERCONF="/var/lib/neo4j/conf/neo4j-server.properties"
+ENV NEO4J_ACCEPT_LICENSE_AGREEMENT=yes
 
 RUN sed -i s/dbms.security.auth_enabled=true/dbms.security.auth_enabled=false/ ${NEOSERCONF} && \
 
