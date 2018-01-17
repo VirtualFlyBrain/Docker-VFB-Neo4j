@@ -1,4 +1,4 @@
-FROM neo4j:2.3-enterprise
+FROM neo4j:2.3.11-enterprise
 
 RUN apt-get -y update && apt-get -y install ssh
 
