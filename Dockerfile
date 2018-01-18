@@ -7,6 +7,8 @@ ENV NEO4J_HEAP_MEMORY=5120
 ENV NEO4J_ALLOW_STORE_UPGRADE=true
 ENV NEO4J_AUTH=none
 
+COPY neo4j /etc/default/neo4j 
+
 ENV NEOCONF="/var/lib/neo4j/conf/neo4j.properties"
 ENV NEOSERCONF="/var/lib/neo4j/conf/neo4j-server.properties"
 
