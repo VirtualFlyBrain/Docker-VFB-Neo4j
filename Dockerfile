@@ -1,20 +1,22 @@
-FROM neo4j:2.3-enterprise
+FROM neo4j:enterprise
 
-RUN apt-get -y update && apt-get -y install ssh
-
-RUN sed -i s/wrapper.java.initmemory=512/wrapper.java.initmemory=1024/ /var/lib/neo4j/conf/neo4j-wrapper.conf
-RUN sed -i s/wrapper.java.maxmemory=512/wrapper.java.maxmemory=5120/ /var/lib/neo4j/conf/neo4j-wrapper.conf
-
-ENV NEOCONF="/var/lib/neo4j/conf/neo4j.properties"
-ENV NEOSERCONF="/var/lib/neo4j/conf/neo4j-server.properties"
 ENV NEO4J_ACCEPT_LICENSE_AGREEMENT=yes
 
-RUN sed -i s/dbms.security.auth_enabled=true/dbms.security.auth_enabled=false/ ${NEOSERCONF} && \
+ENV NEO4J_dbms_memory_pagecache_size=512M
+ENV NEO4J_dbms_memory_heap_initial__size=512M
+ENV NEO4J_dbms_memory_heap_maxSize=10G
 
-sed -i s/#dbms.security.auth_enabled=false/dbms.security.auth_enabled=false/ ${NEOSERCONF} && \
-echo '' >> ${NEOSERCONF} && \
-echo 'read_only=false' >> ${NEOSERCONF} && \
-sed -i s/#allow_store_upgrade=true/allow_store_upgrade=true/ ${NEOCONF} && \
-sed -i s/#dbms.allow_format_migration=true/dbms.allow_format_migration=true/ ${NEOCONF} && \
-sed -i s/#dbms.logs.query.enabled=true/dbms.logs.query.enabled=true/ ${NEOCONF} && \
-echo 'dbms.logs.query.parameter_logging_enabled=true' >> ${NEOSERCONF} 
+ENV NEO4J_dbms_allowFormatMigration=true
+ENV NEO4J_dbms_connectors_default__listen__address=0.0.0.0
+ENV NEO4J_dbms_connector_http_listen__address=${NEO4J_dbms_connectors_default__listen__address}:7474
+ENV NEO4J_dbms_connector_https_listen__address=${NEO4J_dbms_connectors_default__listen__address}:7473
+ENV NEO4J_dbms_connector_bolt_listen__address:=${NEO4J_dbms_connectors_default__listen__address}:7687
+
+#enable security of setting readonly to false:
+ENV NEO4J_dbms_security_auth__enabled=false
+ENV NEO4J_AUTH=none
+ENV NEOREADONLY=false
+RUN echo -e "\nread_only=${NEOREADONLY}\n" >> ${NEOSERCONF}
+
+#for pulling static DB copy
+RUN apk update && apk add openssh 
