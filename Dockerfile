@@ -20,4 +20,4 @@ ENV NEO4J_dbms_logs_query_allocation_logging_enabled=true
 # Log all queries that take longer then (seconds):
 ENV NEO4J_dbms_logs_query_threshold=0
 # Accept Neo4j license:
-NEO4J_ACCEPT_LICENSE_AGREEMENT=yes
+ENV NEO4J_ACCEPT_LICENSE_AGREEMENT=yes
