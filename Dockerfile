@@ -2,15 +2,20 @@ FROM neo4j:enterprise
 
 RUN apk update && apk add openssh
 
+# Location of config files (separate in v2)
 ENV NEOCONF="/var/lib/neo4j/conf/neo4j.conf"
 ENV NEOSERCONF=${NEOCONF}
-
-RUN sed -i s/dbms.security.auth_enabled=true/dbms.security.auth_enabled=false/ ${NEOSERCONF} && \
-
-sed -i s/#dbms.security.auth_enabled=false/dbms.security.auth_enabled=false/ ${NEOSERCONF} && \
-echo '' >> ${NEOSERCONF} && \
-echo 'read_only=false' >> ${NEOSERCONF} && \
-sed -i s/#allow_store_upgrade=true/allow_store_upgrade=true/ ${NEOCONF} && \
-sed -i s/#dbms.allow_format_migration=true/dbms.allow_format_migration=true/ ${NEOCONF} && \
-sed -i s/#dbms.logs.query.enabled=true/dbms.logs.query.enabled=true/ ${NEOCONF} && \
-echo 'dbms.logs.query.parameter_logging_enabled=true' >> ${NEOSERCONF} 
+# Read_only setting:
+ENV NEO4J_dbms_read_only=true
+# Default is open access (read_only) change bellow to require below user/password:
+ENV NEO4J_dbms_security_auth_enabled=false
+ENV NEO4J_AUTH=neo4j/password
+# Enable upgrading of DB:
+ENV NEO4J_ALLOW_STORE_UPGRADE=true
+ENV NEO4J_dbms_allowFormatMigration=true
+# Max memory size (typically half the default):
+ENV NEO4J_dbms_memory_heap_maxSize=10G
+ENV NEO4J_dbms_logs_query_enabled=true
+ENV NEO4J_dbms_logs_query_allocation_logging_enabled=true
+# Log all queries that take longer then (seconds):
+ENV NEO4J_dbms_logs_query_threshold=0
