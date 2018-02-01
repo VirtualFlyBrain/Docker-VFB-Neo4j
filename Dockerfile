@@ -6,7 +6,7 @@ RUN apk update && apk add openssh
 ENV NEOCONF="/var/lib/neo4j/conf/neo4j.conf"
 ENV NEOSERCONF=${NEOCONF}
 # Read_only setting:
-ENV NEO4J_dbms_read__only=true
+ENV NEO4J_dbms_read__only=false
 # Default is open access (read_only) change bellow to require below user/password:
 ENV NEO4J_dbms_security_auth__enabled=false
 ENV NEO4J_AUTH=neo4j/password
