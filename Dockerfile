@@ -12,7 +12,7 @@ ENV NEO4J_dbms_security_auth__enabled=false
 ENV NEO4J_AUTH=neo4j/password
 # Enable upgrading of DB:
 ENV NEO4J_ALLOW_STORE_UPGRADE=true
-ENV NEO4J_dbms_allowFormatMigration=true
+ENV NEO4J_dbms_allow__upgrade=true
 # Max memory size (typically half the default):
 ENV NEO4J_dbms_memory_heap_maxSize=10G
 ENV NEO4J_dbms_logs_query_enabled=true
