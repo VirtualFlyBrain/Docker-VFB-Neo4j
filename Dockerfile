@@ -17,7 +17,7 @@ ENV NEO4J_dbms_allowFormatMigration=true
 ENV NEO4J_dbms_memory_heap_maxSize=10G
 ENV NEO4J_dbms_logs_query_enabled=true
 ENV NEO4J_dbms_logs_query_allocation__logging__enabled=true
-ENV NEO4J_dbms_logs_query_time__logging__enabled
+ENV NEO4J_dbms_logs_query_time__logging__enabled=true
 # Log all queries that take longer then (seconds):
 ENV NEO4J_dbms_logs_query_threshold=0
 # Accept Neo4j license:
