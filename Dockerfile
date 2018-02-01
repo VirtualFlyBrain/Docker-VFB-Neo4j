@@ -26,6 +26,8 @@ ENV NEO4J_ACCEPT_LICENSE_AGREEMENT=yes
 ENV NEO4J_CACHE_MEMORY=2G
 ENV NEO4J_HEAP_MEMORY=5120
 
+ENV NEOREADONLY=true
+
 COPY neo4j /etc/default/neo4j 
 COPY limits.conf /etc/security/limits.conf
 
@@ -35,11 +37,8 @@ RUN sed -i s/wrapper.java.maxmemory=512/wrapper.java.maxmemory=5120/ /var/lib/ne
 RUN sed -i s/dbms.security.auth_enabled=true/dbms.security.auth_enabled=false/ ${NEOSERCONF} && \
 sed -i s/#dbms.security.auth_enabled=false/dbms.security.auth_enabled=false/ ${NEOSERCONF} && \
 echo '' >> ${NEOSERCONF} && \
-echo 'read_only=false' >> ${NEOSERCONF} && \
+echo 'read_only=true' >> ${NEOSERCONF} && \
 sed -i s/#allow_store_upgrade=true/allow_store_upgrade=true/ ${NEOCONF} && \
 sed -i s/#dbms.allow_format_migration=true/dbms.allow_format_migration=true/ ${NEOCONF} && \
 sed -i s/#dbms.logs.query.enabled=true/dbms.logs.query.enabled=true/ ${NEOCONF} && \
 echo 'dbms.logs.query.parameter_logging_enabled=true' >> ${NEOSERCONF} 
-
-RUN echo '' >> ${NEOSERCONF} && \
-echo 'read_only=false' >> ${NEOSERCONF} 
