@@ -16,6 +16,8 @@ ENV NEO4J_ALLOW_STORE_UPGRADE=true
 ENV NEO4J_dbms_allowFormatMigration=true
 # Max memory size (typically half the default):
 ENV NEO4J_dbms_memory_heap_maxSize=10G
+#Enable full logging:
+ENV NEO4J_org_neo4j_server_http_log_enabled=true
 ENV NEO4J_dbms_logs_query_enabled=true
 ENV NEO4J_dbms_logs_query_allocation__logging__enabled=true
 ENV NEO4J_dbms_logs_query_time__logging__enabled=true
