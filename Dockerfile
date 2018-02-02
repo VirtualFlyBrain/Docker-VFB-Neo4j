@@ -6,8 +6,8 @@ RUN apt-get -y update && apt-get -y install ssh
 ENV NEOCONF="/var/lib/neo4j/conf/neo4j.properties"
 ENV NEOSERCONF="/var/lib/neo4j/conf/neo4j-server.properties"
 # Read_only setting:
-ENV NEO4J_dbms_read__only=true
-# Default is open access (read_only) change bellow to require below user/password:
+ENV NEO4J_dbms_read__only=false
+# Default is open access change bellow to require below user/password:
 ENV NEO4J_dbms_security_auth__enabled=false
 ENV NEO4J_AUTH=neo4j/password
 # Enable upgrading of DB:
@@ -40,6 +40,3 @@ sed -i s/#allow_store_upgrade=true/allow_store_upgrade=true/ ${NEOCONF} && \
 sed -i s/#dbms.allow_format_migration=true/dbms.allow_format_migration=true/ ${NEOCONF} && \
 sed -i s/#dbms.logs.query.enabled=true/dbms.logs.query.enabled=true/ ${NEOCONF} && \
 echo 'dbms.logs.query.parameter_logging_enabled=true' >> ${NEOSERCONF} 
-
-RUN echo '' >> ${NEOSERCONF} && \
-echo 'read_only=false' >> ${NEOSERCONF} 
