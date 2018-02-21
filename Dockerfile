@@ -44,4 +44,5 @@ echo 'read_only=true' >> ${NEOSERCONF} && \
 sed -i s/#allow_store_upgrade=true/allow_store_upgrade=true/ ${NEOCONF} && \
 sed -i s/#dbms.allow_format_migration=true/dbms.allow_format_migration=true/ ${NEOCONF} && \
 sed -i s/#dbms.logs.query.enabled=true/dbms.logs.query.enabled=true/ ${NEOCONF} && \
+sed -i 's|#dbms.security.load_csv_file_url_root=data/import|dbms.security.load_csv_file_url_root=/import|' ${NEOCONF} && \
 echo 'dbms.logs.query.parameter_logging_enabled=true' >> ${NEOSERCONF} 
