@@ -22,3 +22,5 @@ ENV NEO4J_dbms_logs_query_time__logging__enabled=true
 ENV NEO4J_dbms_logs_query_threshold=0
 # Accept Neo4j license:
 ENV NEO4J_ACCEPT_LICENSE_AGREEMENT=yes
+# Set import directory:
+ENV NEO4J_dbms_directories_import=/import
