@@ -46,3 +46,9 @@ sed -i s/#dbms.allow_format_migration=true/dbms.allow_format_migration=true/ ${N
 sed -i s/#dbms.logs.query.enabled=true/dbms.logs.query.enabled=true/ ${NEOCONF} && \
 sed -i 's|#dbms.security.load_csv_file_url_root=data/import|dbms.security.load_csv_file_url_root=/import|' ${NEOCONF} && \
 echo 'dbms.logs.query.parameter_logging_enabled=true' >> ${NEOSERCONF} 
+
+
+ENV APOC_VERSION 3.5.0.4
+ENV APOC_URI https://github.com/neo4j-contrib/neo4j-apoc-procedures/releases/download/${APOC_VERSION}/apoc-${APOC_VERSION}-all.jar
+
+RUN wget $APOC_URI && mv apoc-${APOC_VERSION}-all.jar plugins/apoc-${APOC_VERSION}-all.jar
