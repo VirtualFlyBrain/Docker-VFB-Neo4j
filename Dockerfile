@@ -17,4 +17,5 @@ echo 'read_only=false' >> ${NEOSERCONF} && \
 sed -i s/#allow_store_upgrade=true/allow_store_upgrade=true/ ${NEOCONF} && \
 sed -i s/#dbms.allow_format_migration=true/dbms.allow_format_migration=true/ ${NEOCONF} && \
 sed -i s/#dbms.logs.query.enabled=true/dbms.logs.query.enabled=true/ ${NEOCONF} && \
-echo 'dbms.logs.query.parameter_logging_enabled=true' >> ${NEOSERCONF} 
+echo 'dbms.logs.query.parameter_logging_enabled=true' >> ${NEOSERCONF} &&
+echo 'dbms.jvm.additional=-Xss6M' >> ${NEOSERCONF}
