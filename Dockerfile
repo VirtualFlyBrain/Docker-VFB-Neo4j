@@ -2,6 +2,7 @@ FROM neo4j:2.3-enterprise
 
 RUN apt-get -y update && apt-get -y install ssh
 
+
 # Location of config files (separate in v2)
 ENV NEOCONF="/var/lib/neo4j/conf/neo4j.properties"
 ENV NEOSERCONF="/var/lib/neo4j/conf/neo4j-server.properties"
