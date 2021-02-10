@@ -1,4 +1,4 @@
-FROM neo4j:enterprise 
+FROM neo4j:4.2-enterprise
 
 RUN apk update && apk add openssh
 
