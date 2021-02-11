@@ -1,7 +1,5 @@
 FROM neo4j:4.2-enterprise
 
-RUN apk update && apk add openssh
-
 # Location of config files (separate in v2)
 ENV NEOCONF="/var/lib/neo4j/conf/neo4j.conf"
 ENV NEOSERCONF=${NEOCONF}
