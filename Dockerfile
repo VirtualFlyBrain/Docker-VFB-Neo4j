@@ -1,4 +1,4 @@
-FROM neo4j:4.2-enterprise
+FROM neo4j:3.5.17-enterprise
 
 # Location of config files (separate in v2)
 ENV NEOCONF="/var/lib/neo4j/conf/neo4j.conf"
