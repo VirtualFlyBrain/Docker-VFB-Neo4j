@@ -22,6 +22,9 @@ ENV NEO4J_org_neo4j_server_http_log_enabled=true
 ENV NEO4J_dbms_logs_query_enabled=true
 ENV NEO4J_dbms_logs_query_allocation__logging__enabled=true
 ENV NEO4J_dbms_logs_query_time__logging__enabled=true
+# Fix for log4j vulnerability
+ENV LOG4J_FORMAT_MSG_NO_LOOKUPS=true
+ENV NEO4J_dbms_jvm_additional="-Dlog4j2.formatMsgNoLookups=true -Dlog4j2.disable.jmx=true"
 # Log all queries that take longer then (seconds):
 ENV NEO4J_dbms_logs_query_threshold=0
 # Accept Neo4j license:
