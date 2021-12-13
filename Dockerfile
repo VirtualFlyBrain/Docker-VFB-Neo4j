@@ -1,6 +1,6 @@
 FROM neo4j:3.3.3-enterprise
 
-RUN apt-get -y update && apt-get -y install ssh
+RUN apk update && apk add ssh
 
 
 # Location of config files (separate in v2)
