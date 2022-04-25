@@ -13,6 +13,8 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v1
+    - name: Setup environment
+      run: echo "BRANCH=${GITHUB_REF#refs/heads/}" >> $GITHUB_ENV
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v1
     - name: Set up Docker Buildx
@@ -30,4 +32,4 @@ jobs:
         context: .
         file: Dockerfile
         platforms: linux/amd64,linux/arm64
-        tags: docker-vfb-neo4j:${GITHUB_REF#refs/heads/}
+        tags: docker-vfb-neo4j:${{ env.BRANCH }}
