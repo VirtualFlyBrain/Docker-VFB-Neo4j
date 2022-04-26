@@ -1,4 +1,4 @@
-FROM neo4j:4.4-enterprise
+FROM neo4j:4.4.3-enterprise
 
 # Location of config files (separate in v2)
 ENV NEOCONF="/var/lib/neo4j/conf/neo4j.conf"
@@ -26,7 +26,7 @@ ENV NEO4J_ACCEPT_LICENSE_AGREEMENT=yes
 # Set import directory:
 ENV NEO4J_dbms_directories_import=/import
 # Add apoc tools
-ENV NEO4J_apoc_export_file_enabled=true	
-ENV NEO4J_apoc_import_file_enabled=true	
-ENV NEO4J_apoc_import_file_use__neo4j__config=true	
-ENV NEO4JLABS_PLUGINS=\[\"apoc\"\]	
+ENV NEO4J_apoc_export_file_enabled=true
+ENV NEO4J_apoc_import_file_enabled=true
+ENV NEO4J_apoc_import_file_use__neo4j__config=true
+ENV NEO4JLABS_PLUGINS=\[\"apoc\"\]
