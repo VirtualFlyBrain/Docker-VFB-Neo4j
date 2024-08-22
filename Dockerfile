@@ -16,7 +16,7 @@ ENV NEO4J_dbms_memory_heap_maxSize=10G
 ENV NEO4J_dbms_logs_query_enabled=true
 ENV NEO4J_dbms_logs_query_allocation__logging__enabled=true
 ENV NEO4J_dbms_logs_query_time__logging__enabled=true
-# Log all queries that take longer then (seconds):
+# Log all queries that take longer than (seconds):
 ENV NEO4J_dbms_logs_query_threshold=0
 # Fix for log4j vulnerability
 ENV LOG4J_FORMAT_MSG_NO_LOOKUPS=true
@@ -30,3 +30,6 @@ ENV NEO4J_apoc_export_file_enabled=true
 ENV NEO4J_apoc_import_file_enabled=true	
 ENV NEO4J_apoc_import_file_use__neo4j__config=true	
 ENV NEO4JLABS_PLUGINS=\[\"apoc\"\]	
+rm -vf /plugins/apoc*.jar
+
+ADD https://github.com/neo4j-contrib/neo4j-apoc-procedures/releases/download/4.2.0.9/apoc-4.2.0.9-all.jar /plugins/
