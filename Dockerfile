@@ -30,6 +30,6 @@ ENV NEO4J_apoc_export_file_enabled=true
 ENV NEO4J_apoc_import_file_enabled=true	
 ENV NEO4J_apoc_import_file_use__neo4j__config=true	
 ENV NEO4JLABS_PLUGINS=\[\"apoc\"\]	
-rm -vf /plugins/apoc*.jar
+RUN rm -vf /plugins/apoc*.jar
 
 ADD https://github.com/neo4j-contrib/neo4j-apoc-procedures/releases/download/4.2.0.9/apoc-4.2.0.9-all.jar /plugins/
