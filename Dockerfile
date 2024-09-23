@@ -30,3 +30,5 @@ ENV NEO4J_apoc_export_file_enabled=true
 ENV NEO4J_apoc_import_file_enabled=true	
 ENV NEO4J_apoc_import_file_use__neo4j__config=true	
 ENV NEO4JLABS_PLUGINS=\[\"apoc\"\]	
+# Remove query cache
+ENV NEO4J_dbms_query__cache__size=0
